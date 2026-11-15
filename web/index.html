@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drag-to-fit captcha</title>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<main class="card">
+  <header>
+    <div class="badge" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>
+      </svg>
+    </div>
+    <div>
+      <h1>Security check</h1>
+      <p class="sub">Drag the puzzle piece into the socket it was cut from. Watch out: some images contain decoy holes.</p>
+    </div>
+  </header>
+
+  <div class="stage" id="stage">
+    <img id="bg" class="bg" alt="Captcha background" draggable="false">
+    <img id="piece" class="piece" alt="Puzzle piece" draggable="false" tabindex="0" role="slider"
+         aria-label="Puzzle piece position" aria-valuemin="0" aria-valuemax="0">
+    <button id="refresh" class="refresh" type="button" aria-label="New challenge" title="New challenge">&#8635;</button>
+    <div id="status" class="status" role="status" aria-live="polite" hidden></div>
+  </div>
+
+  <p class="hint" id="hint">Hold and drag the piece into the socket it fits. Keyboard: <kbd>&#8592;</kbd><kbd>&#8594;</kbd> to move, <kbd>Shift</kbd> + arrow for fine steps, <kbd>&#8629;</kbd> to submit.</p>
+
+  <section class="panel" id="panel" hidden>
+    <form id="commentForm">
+      <label class="label" for="comment">Ticket issued — try the protected action</label>
+      <textarea id="comment" maxlength="300" rows="3" placeholder="Leave a comment…"></textarea>
+      <button type="submit" id="submitComment" class="primary">Post comment</button>
+    </form>
+    <pre id="output" class="output" hidden></pre>
+  </section>
+
+  <footer class="note">Protected by slide-captcha. A verification ticket is valid for 5 minutes and can be redeemed once.</footer>
+</main>
+<script src="/app.js"></script>
+</body>
+</html>
